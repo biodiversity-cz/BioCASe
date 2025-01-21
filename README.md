@@ -8,4 +8,4 @@ The base image is checked [once per week](.github/dependabot.yml#L6) for updates
 Functional differences against the official version
 * no root in container
 * exposing app directly on :80 without the /biocase subpath
-* added /opt/biocase/config-initial as a source for copying into volume when deployed on Kubernetes
+* add /opt/biocase/config-initial (copy of config) as a source for copying into volumeMount when deployed on Kubernetes
