@@ -33,6 +33,8 @@ RUN /usr/sbin/a2enmod cgid
 # Checkout BioCASe
 WORKDIR /opt
 COPY --from=subversion --chown=$APACHE_RUN_GROUP:$APACHE_RUN_USER /opt/biocase /opt/biocase
+# Keep initial config values for Kubernetes volume mount
+COPY /opt/biocase/config /opt/biocase/config-initial
 
 # Set bpsPath in lib/biocase/addjustpath.py to r'/opt/biocase'
 RUN sed -i 's/C:\\Workspace\\bps3/\/opt\/biocase/g' /opt/biocase/lib/biocase/adjustpath.py
