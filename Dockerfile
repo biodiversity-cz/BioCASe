@@ -1,6 +1,6 @@
-FROM debian:bullseye AS subversion
-ARG BIOCASE_VERSION=3.8.6
-#http://ww2.biocase.org/svn/bps2/tags/
+FROM debian AS subversion
+ARG BIOCASE_VERSION
+
 RUN apt-get update && apt-get install -y --no-install-recommends subversion && \
     rm -rf /var/lib/apt/lists/*
 WORKDIR /opt
