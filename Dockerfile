@@ -12,7 +12,8 @@ MAINTAINER Petr Novotný <novotp@natur.cuni.cz>
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-    apache2 pkg-config g++ unixodbc-dev libmariadb-dev && \
+    apache2 pkg-config g++ unixodbc-dev libmariadb-dev  \
+    graphviz default-jre-headless && \
     apt-get autoclean -y && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/* /var/lib/log/* /tmp/* /var/tmp/*
