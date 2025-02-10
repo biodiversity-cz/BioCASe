@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends subversion && \
 WORKDIR /opt
 RUN svn export http://ww2.biocase.org/svn/bps2/tags/release_${BIOCASE_VERSION} biocase
 
-FROM python:slim@sha256:026dd417a88d0be8ed5542a05cff5979d17625151be8a1e25a994f85c87962a5
+FROM python:slim@sha256:ae9f9ac89467077ed1efefb6d9042132d28134ba201b2820227d46c9effd3174
 MAINTAINER Joerg Holetschek <j.holetschek@bgbm.org>
 MAINTAINER Petr Novotný <novotp@natur.cuni.cz>
 
