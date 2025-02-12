@@ -13,6 +13,7 @@ jobs:
         strategy:
             matrix:
                 version: [ 3.8.6 ]  # Define versions for matrix build https://git.bgbm.org/biocase/bps/-/releases
+        permissions:
             contents: read
             packages: write
             attestations: write
