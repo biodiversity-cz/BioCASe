@@ -1,10 +1,14 @@
-FROM debian AS subversion
+FROM debian AS downloader
 ARG BIOCASE_VERSION
 
-RUN apt-get update && apt-get install -y --no-install-recommends subversion && \
+RUN apt-get update && apt-get install -y --no-install-recommends curl unzip && \
     rm -rf /var/lib/apt/lists/*
+
 WORKDIR /opt
-RUN svn export http://ww2.biocase.org/svn/bps2/tags/release_${BIOCASE_VERSION} biocase
+RUN curl -L -o biocase.zip https://git.bgbm.org/biocase/bps/-/archive/${BIOCASE_VERSION}/bps-${BIOCASE_VERSION}.zip && \
+    unzip biocase.zip && \
+    rm biocase.zip && \
+    mv bps-${BIOCASE_VERSION} biocase
 
 FROM python:slim@sha256:ae9f9ac89467077ed1efefb6d9042132d28134ba201b2820227d46c9effd3174
 MAINTAINER Joerg Holetschek <j.holetschek@bgbm.org>
@@ -33,7 +37,7 @@ RUN /usr/sbin/a2enmod cgid
 
 # Checkout BioCASe
 WORKDIR /opt
-COPY --from=subversion --chown=$APACHE_RUN_GROUP:$APACHE_RUN_USER /opt/biocase /opt/biocase
+COPY --from=downloader --chown=$APACHE_RUN_GROUP:$APACHE_RUN_USER /opt/biocase /opt/biocase
 # Keep initial config values for Kubernetes volume mount
 RUN cp -r /opt/biocase/config /opt/biocase/config-initial
 

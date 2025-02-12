@@ -12,7 +12,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                version: [ 3.8.5, 3.8.6 ]  # Define versions for matrix build http://ww2.biocase.org/svn/bps2/tags/
+                version: [ 3.8.6 ]  # Define versions for matrix build http://ww2.biocase.org/svn/bps2/tags/
         permissions:
             contents: read
             packages: write
