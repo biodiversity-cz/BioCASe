@@ -10,7 +10,7 @@ RUN curl -L -o biocase.zip https://git.bgbm.org/biocase/bps/-/archive/${BIOCASE_
     rm biocase.zip && \
     mv bps-${BIOCASE_VERSION} biocase
 
-FROM python:slim@sha256:27f90d79cc85e9b7b2560063ef44fa0e9eaae7a7c3f5a9f74563065c5477cc24
+FROM python:slim@sha256:58c30f5bfaa718b5803a53393190b9c68bd517c44c6c94c1b6c8c172bcfad040
 MAINTAINER Joerg Holetschek <j.holetschek@bgbm.org>
 MAINTAINER Petr Novotný <novotp@natur.cuni.cz>
 
